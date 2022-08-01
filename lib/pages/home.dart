@@ -135,4 +135,19 @@ class HomePageState extends State<HomePage> {
       ],
     );
   }
+
+  Widget buildAccountInfoPanel(BuildContext context) {
+    return Card(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Row(),
+          Row(),
+          Row(),
+          Row(),
+          Row(),
+        ],
+      ),
+    );
+  }
 }
