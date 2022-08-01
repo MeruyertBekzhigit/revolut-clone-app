@@ -18,7 +18,7 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffe5e8e8),
+      backgroundColor: const Color(0xfff7f7f7),
       appBar: AppBar(
         title: const Text('Revolut', style: TextStyle(color: Colors.black)),
         shadowColor: Colors.transparent,
@@ -31,18 +31,31 @@ class HomePageState extends State<HomePage> {
             children: [
               Row(
                 children: [
-                  const Icon(Icons.add_a_photo, color: Colors.black, size: 30),
+                  const IconButton(
+                    icon:
+                        Icon(Icons.add_a_photo, color: Colors.black, size: 30),
+                    onPressed: null,
+                  ),
                   Expanded(
                     child: Container(),
                   ),
-                  const Icon(Icons.bar_chart_rounded,
-                      color: Colors.black, size: 30),
-                  const SizedBox(width: 40),
-                  const Icon(Icons.star_rate_rounded,
-                      color: Colors.black, size: 30),
-                  const SizedBox(width: 40),
-                  const Icon(Icons.notifications,
-                      color: Colors.black, size: 30),
+                  const IconButton(
+                    icon: Icon(Icons.bar_chart_rounded,
+                        color: Colors.black, size: 30),
+                    onPressed: null,
+                  ),
+                  const SizedBox(width: 15),
+                  const IconButton(
+                    icon: Icon(Icons.star_rate_rounded,
+                        color: Colors.black, size: 30),
+                    onPressed: null,
+                  ),
+                  const SizedBox(width: 15),
+                  const IconButton(
+                    icon: Icon(Icons.notifications,
+                        color: Colors.black, size: 30),
+                    onPressed: null,
+                  ),
                 ],
               ),
               Row(),
