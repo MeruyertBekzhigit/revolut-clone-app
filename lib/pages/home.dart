@@ -1,4 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+enum AvailableProductSegments { accounts, cards, stocks, crypto, vaults }
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -10,6 +13,8 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
+  AvailableProductSegments _selectedSegment = AvailableProductSegments.accounts;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,10 +45,48 @@ class HomePageState extends State<HomePage> {
                       color: Colors.black, size: 30),
                 ],
               ),
-              Row(
-                children: [],
-              ),
               Row(),
+              const SizedBox(height: 16),
+              Row(
+                children: [
+                  Expanded(
+                    child: CupertinoSlidingSegmentedControl<
+                        AvailableProductSegments>(
+                      backgroundColor: Colors.transparent,
+                      groupValue: _selectedSegment,
+                      onValueChanged: (AvailableProductSegments? value) {
+                        if (value != null) {
+                          setState(() {
+                            _selectedSegment = value;
+                          });
+                        }
+                      },
+                      children: const <AvailableProductSegments, Widget>{
+                        AvailableProductSegments.accounts: Text(
+                          'Accounts',
+                          style: TextStyle(color: Colors.black, fontSize: 15),
+                        ),
+                        AvailableProductSegments.cards: Text(
+                          'Cards',
+                          style: TextStyle(color: Colors.black, fontSize: 15),
+                        ),
+                        AvailableProductSegments.stocks: Text(
+                          'Stocks',
+                          style: TextStyle(color: Colors.black, fontSize: 15),
+                        ),
+                        AvailableProductSegments.crypto: Text(
+                          'Crypto',
+                          style: TextStyle(color: Colors.black, fontSize: 15),
+                        ),
+                        AvailableProductSegments.vaults: Text(
+                          'Vaults',
+                          style: TextStyle(color: Colors.black, fontSize: 15),
+                        ),
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ],
           )),
     );
