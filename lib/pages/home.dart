@@ -182,6 +182,9 @@ class HomePageState extends State<HomePage> {
                   size: 35,
                 ),
               ]),
+              const SizedBox(
+                height: 8,
+              ),
               Row(
                 children: [
                   Ink(
@@ -230,7 +233,7 @@ class HomePageState extends State<HomePage> {
                       ),
                     ),
                   ),
-                  const SizedBox(width: 8),
+                  const SizedBox(width: 16),
                   Ink(
                     width: 50,
                     height: 40,
@@ -252,8 +255,73 @@ class HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
-              Row(),
-              Row(),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  const Text(
+                    'Transactions',
+                    style: TextStyle(fontSize: 16, color: Color(0xff75808a)),
+                  ),
+                  Expanded(
+                    child: Container(),
+                  ),
+                  const TextButton(
+                    onPressed: null,
+                    child: Text(
+                      'See all',
+                      style: TextStyle(fontSize: 16, color: Colors.blue),
+                    ),
+                  )
+                ],
+              ),
+              Row(
+                children: [
+                  const IconButton(
+                    icon: Icon(Icons.autorenew, color: Colors.black, size: 35),
+                    onPressed: null,
+                  ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        Text(
+                          'Sold EUR for USD',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 17,
+                              fontWeight: FontWeight.w400),
+                        ),
+                        SizedBox(height: 6),
+                        Text('11 July, 19:08',
+                            style: TextStyle(
+                              color: Color(0xff75808a),
+                              fontSize: 15,
+                            ))
+                      ],
+                    ),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: const [
+                      Text(
+                        '- 3.41 €',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 17,
+                            fontWeight: FontWeight.w400),
+                      ),
+                      SizedBox(height: 6),
+                      Text('+ 3.43 \$',
+                          style: TextStyle(
+                            color: Color(0xff75808a),
+                            fontSize: 15,
+                          ))
+                    ],
+                  )
+                ],
+              ),
             ],
           ),
         ),
