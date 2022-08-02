@@ -33,10 +33,20 @@ class HomePageState extends State<HomePage> {
               const SizedBox(height: 16),
               buildInputSearchBar(context),
               const SizedBox(height: 16),
-              buildAvailableProductSegments(context)
+              buildAvailableProductSegments(context),
+              const SizedBox(height: 16),
+              chooseCardToDisplay(),
             ],
           )),
     );
+  }
+
+  Widget chooseCardToDisplay() {
+    if (_selectedSegment == AvailableProductSegments.accounts) {
+      return buildAccountInfoPanel();
+    } else {
+      return Container();
+    }
   }
 
   Widget buildQuickAccessMenuBar() {
@@ -136,17 +146,117 @@ class HomePageState extends State<HomePage> {
     );
   }
 
-  Widget buildAccountInfoPanel(BuildContext context) {
-    return Card(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          Row(),
-          Row(),
-          Row(),
-          Row(),
-          Row(),
-        ],
+  Widget buildAccountInfoPanel() {
+    return Center(
+      child: Card(
+        color: Colors.white,
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Row(children: [
+                InkWell(
+                  onTap: () {},
+                  child: Row(
+                    children: const [
+                      Text(
+                        '0 €',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 24),
+                      ),
+                      IconButton(
+                        onPressed: null,
+                        icon: Icon(Icons.expand_circle_down_rounded,
+                            color: Colors.blue),
+                      )
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: Container(),
+                ),
+                const Icon(
+                  Icons.panorama_fish_eye_outlined,
+                  color: Colors.blue,
+                  size: 35,
+                ),
+              ]),
+              Row(
+                children: [
+                  Ink(
+                    width: 140,
+                    height: 40,
+                    decoration: const BoxDecoration(
+                        shape: BoxShape.rectangle,
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        color: Color(0xffe5f0fc)),
+                    child: InkWell(
+                      onTap: () {},
+                      splashColor: Colors.white70,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Icon(Icons.add, color: Colors.blue, size: 18),
+                          Text(
+                            'Add money',
+                            style: TextStyle(fontSize: 16, color: Colors.blue),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Ink(
+                    width: 120,
+                    height: 40,
+                    decoration: const BoxDecoration(
+                        shape: BoxShape.rectangle,
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        color: Color(0xffe5f0fc)),
+                    child: InkWell(
+                      onTap: () {},
+                      splashColor: Colors.white70,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Icon(Icons.compare_arrows_rounded,
+                              color: Colors.blue, size: 18),
+                          Text(
+                            'Transfer',
+                            style: TextStyle(fontSize: 16, color: Colors.blue),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Ink(
+                    width: 50,
+                    height: 40,
+                    decoration: const BoxDecoration(
+                        shape: BoxShape.rectangle,
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        color: Color(0xffe5f0fc)),
+                    child: InkWell(
+                      onTap: () {},
+                      splashColor: Colors.white70,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Icon(Icons.more_horiz_rounded,
+                              color: Colors.blue, size: 18),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Row(),
+              Row(),
+            ],
+          ),
+        ),
       ),
     );
   }
