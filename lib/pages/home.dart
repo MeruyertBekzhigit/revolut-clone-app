@@ -119,6 +119,7 @@ class HomePageState extends State<HomePage> {
               }
             },
             children: const <AvailableProductSegments, Widget>{
+              // extract to build segments with text parameter
               AvailableProductSegments.accounts: Text(
                 'Accounts',
                 style: TextStyle(color: Colors.black, fontSize: 16),
@@ -146,6 +147,178 @@ class HomePageState extends State<HomePage> {
     );
   }
 
+  Widget buildBalanceInfo() {
+    return Row(children: [
+      InkWell(
+        onTap: () {},
+        child: Row(
+          children: const [
+            Text(
+              '0 €',
+              style: TextStyle(fontWeight: FontWeight.w600, fontSize: 28),
+            ),
+            IconButton(
+              onPressed: null,
+              icon: Icon(Icons.expand_circle_down_rounded, color: Colors.blue),
+            )
+          ],
+        ),
+      ),
+      Expanded(
+        child: Container(),
+      ),
+      const Icon(
+        Icons.panorama_fish_eye_outlined,
+        color: Colors.blue,
+        size: 35,
+      ),
+    ]);
+  }
+
+  Widget buildAccountActionsPanel() {
+    return Row(
+      children: [
+        Ink(
+          width: 140,
+          height: 40,
+          decoration: const BoxDecoration(
+              shape: BoxShape.rectangle,
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+              color: Color(0xffe5f0fc)),
+          child: InkWell(
+            onTap: () {},
+            splashColor: Colors.white70,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Icon(Icons.add, color: Colors.blue, size: 18),
+                Text(
+                  'Add money',
+                  style: TextStyle(fontSize: 16, color: Colors.blue),
+                )
+              ],
+            ),
+          ),
+        ),
+        const SizedBox(width: 8),
+        Ink(
+          width: 120,
+          height: 40,
+          decoration: const BoxDecoration(
+            shape: BoxShape.rectangle,
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+            color: Color(0xffe5f0fc),
+          ),
+          child: InkWell(
+            onTap: () {},
+            splashColor: Colors.white70,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Icon(Icons.compare_arrows_rounded,
+                    color: Colors.blue, size: 18),
+                Text(
+                  'Transfer',
+                  style: TextStyle(fontSize: 16, color: Colors.blue),
+                )
+              ],
+            ),
+          ),
+        ),
+        const SizedBox(width: 8),
+        Ink(
+          width: 50,
+          height: 40,
+          decoration: const BoxDecoration(
+              shape: BoxShape.rectangle,
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+              color: Color(0xffe5f0fc)),
+          child: InkWell(
+            onTap: () {},
+            splashColor: Colors.white70,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Icon(Icons.more_horiz_rounded, color: Colors.blue, size: 18),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget buildTransactionsSectionHeader() {
+    return Row(
+      children: [
+        const Text(
+          'Transactions',
+          style: TextStyle(fontSize: 16, color: Color(0xff75808a)),
+        ),
+        Expanded(
+          child: Container(),
+        ),
+        const TextButton(
+          onPressed: null,
+          child: Text(
+            'See all',
+            style: TextStyle(fontSize: 16, color: Colors.blue),
+          ),
+        )
+      ],
+    );
+  }
+
+  Widget buildTransactionsSectionBody() {
+    return Row(
+      children: [
+        const IconButton(
+          icon: Icon(Icons.autorenew, color: Colors.black, size: 35),
+          onPressed: null,
+        ),
+        const SizedBox(width: 6),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: const [
+              Text(
+                'Sold EUR for USD',
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 17,
+                    fontWeight: FontWeight.w400),
+              ),
+              SizedBox(height: 6),
+              Text('11 July, 19:08',
+                  style: TextStyle(
+                    color: Color(0xff75808a),
+                    fontSize: 15,
+                  ))
+            ],
+          ),
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: const [
+            Text(
+              '- 3.41 €',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 17,
+                  fontWeight: FontWeight.w400),
+            ),
+            SizedBox(height: 6),
+            Text('+ 3.43 \$',
+                style: TextStyle(
+                  color: Color(0xff75808a),
+                  fontSize: 15,
+                ))
+          ],
+        )
+      ],
+    );
+  }
+
   Widget buildAccountInfoPanel() {
     return Center(
       child: Card(
@@ -155,174 +328,16 @@ class HomePageState extends State<HomePage> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Row(children: [
-                InkWell(
-                  onTap: () {},
-                  child: Row(
-                    children: const [
-                      Text(
-                        '0 €',
-                        style: TextStyle(
-                            fontWeight: FontWeight.w600, fontSize: 28),
-                      ),
-                      IconButton(
-                        onPressed: null,
-                        icon: Icon(Icons.expand_circle_down_rounded,
-                            color: Colors.blue),
-                      )
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: Container(),
-                ),
-                const Icon(
-                  Icons.panorama_fish_eye_outlined,
-                  color: Colors.blue,
-                  size: 35,
-                ),
-              ]),
+              buildBalanceInfo(),
               const SizedBox(
                 height: 8,
               ),
-              Row(
-                children: [
-                  Ink(
-                    width: 140,
-                    height: 40,
-                    decoration: const BoxDecoration(
-                        shape: BoxShape.rectangle,
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                        color: Color(0xffe5f0fc)),
-                    child: InkWell(
-                      onTap: () {},
-                      splashColor: Colors.white70,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Icon(Icons.add, color: Colors.blue, size: 18),
-                          Text(
-                            'Add money',
-                            style: TextStyle(fontSize: 16, color: Colors.blue),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 8),
-                  Ink(
-                    width: 120,
-                    height: 40,
-                    decoration: const BoxDecoration(
-                        shape: BoxShape.rectangle,
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                        color: Color(0xffe5f0fc)),
-                    child: InkWell(
-                      onTap: () {},
-                      splashColor: Colors.white70,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Icon(Icons.compare_arrows_rounded,
-                              color: Colors.blue, size: 18),
-                          Text(
-                            'Transfer',
-                            style: TextStyle(fontSize: 16, color: Colors.blue),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 16),
-                  Ink(
-                    width: 50,
-                    height: 40,
-                    decoration: const BoxDecoration(
-                        shape: BoxShape.rectangle,
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                        color: Color(0xffe5f0fc)),
-                    child: InkWell(
-                      onTap: () {},
-                      splashColor: Colors.white70,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Icon(Icons.more_horiz_rounded,
-                              color: Colors.blue, size: 18),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              buildAccountActionsPanel(),
               const SizedBox(
                 height: 20,
               ),
-              Row(
-                children: [
-                  const Text(
-                    'Transactions',
-                    style: TextStyle(fontSize: 16, color: Color(0xff75808a)),
-                  ),
-                  Expanded(
-                    child: Container(),
-                  ),
-                  const TextButton(
-                    onPressed: null,
-                    child: Text(
-                      'See all',
-                      style: TextStyle(fontSize: 16, color: Colors.blue),
-                    ),
-                  )
-                ],
-              ),
-              Row(
-                children: [
-                  const IconButton(
-                    icon: Icon(Icons.autorenew, color: Colors.black, size: 35),
-                    onPressed: null,
-                  ),
-                  const SizedBox(width: 6),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text(
-                          'Sold EUR for USD',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 17,
-                              fontWeight: FontWeight.w400),
-                        ),
-                        SizedBox(height: 6),
-                        Text('11 July, 19:08',
-                            style: TextStyle(
-                              color: Color(0xff75808a),
-                              fontSize: 15,
-                            ))
-                      ],
-                    ),
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: const [
-                      Text(
-                        '- 3.41 €',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 17,
-                            fontWeight: FontWeight.w400),
-                      ),
-                      SizedBox(height: 6),
-                      Text('+ 3.43 \$',
-                          style: TextStyle(
-                            color: Color(0xff75808a),
-                            fontSize: 15,
-                          ))
-                    ],
-                  )
-                ],
-              ),
+              buildTransactionsSectionHeader(),
+              buildTransactionsSectionBody()
             ],
           ),
         ),
