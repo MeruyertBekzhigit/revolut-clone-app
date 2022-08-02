@@ -163,7 +163,7 @@ class HomePageState extends State<HomePage> {
                       Text(
                         '0 €',
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 24),
+                            fontWeight: FontWeight.w600, fontSize: 28),
                       ),
                       IconButton(
                         onPressed: null,
@@ -282,6 +282,7 @@ class HomePageState extends State<HomePage> {
                     icon: Icon(Icons.autorenew, color: Colors.black, size: 35),
                     onPressed: null,
                   ),
+                  const SizedBox(width: 6),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
