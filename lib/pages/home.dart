@@ -27,7 +27,7 @@ class HomePageState extends State<HomePage> {
       body: SingleChildScrollView(
         child: Container(
             margin:
-                const EdgeInsets.only(left: 16, top: 24, right: 16, bottom: 24),
+                const EdgeInsets.only(left: 24, top: 24, right: 24, bottom: 24),
             child: Column(
               children: [
                 buildQuickAccessMenuBar(),
@@ -37,6 +37,8 @@ class HomePageState extends State<HomePage> {
                 buildAvailableProductSegments(context),
                 const SizedBox(height: 16),
                 chooseCardToDisplay(),
+                const SizedBox(height: 20),
+                buildSectionHeader('Recent'),
                 buildRecentPaymentsSection(),
               ],
             )),
@@ -251,11 +253,11 @@ class HomePageState extends State<HomePage> {
     );
   }
 
-  Widget buildTransactionsSectionHeader() {
+  Widget buildSectionHeader(String headerTitle) {
     return Row(
       children: [
-        const Text(
-          'Transactions',
+        Text(
+          headerTitle,
           style: TextStyle(fontSize: 16, color: Color(0xff75808a)),
         ),
         Expanded(
@@ -339,8 +341,8 @@ class HomePageState extends State<HomePage> {
               const SizedBox(
                 height: 20,
               ),
-              buildTransactionsSectionHeader(),
-              buildTransactionsSectionBody()
+              buildSectionHeader('Transactions'),
+              buildTransactionsSectionBody(),
             ],
           ),
         ),
@@ -355,21 +357,22 @@ Widget buildRecentPaymentsSection() {
     child: Card(
       color: Colors.white,
       child: ListView(
-          padding: const EdgeInsets.only(left: 8, top: 16, right: 8),
-          scrollDirection: Axis.horizontal,
-          children: <Widget>[
-            ContactList('Peter'),
-            ContactList('Peter'),
-            ContactList('Peter'),
-            ContactList('Peter'),
-            ContactList('Peter'),
-            ContactList('Peter'),
-            ContactList('Peter'),
-            ContactList('Peter'),
-            ContactList('Peter'),
-            ContactList('Peter'),
-            ContactList('Peter'),
-          ]),
+        padding: const EdgeInsets.only(left: 8, top: 16, right: 8),
+        scrollDirection: Axis.horizontal,
+        children: <Widget>[
+          ContactList('Jane Doe'),
+          ContactList('Jane Doe'),
+          ContactList('Jane Doe'),
+          ContactList('Jane Doe'),
+          ContactList('Jane Doe'),
+          ContactList('Jane Doe'),
+          ContactList('Jane Doe'),
+          ContactList('Jane Doe'),
+          ContactList('Jane Doe'),
+          ContactList('Jane Doe'),
+          ContactList('Jane Doe'),
+        ],
+      ),
     ),
   );
 }
@@ -381,9 +384,13 @@ Widget ContactList(String name) {
         children: [
           Stack(
             children: const [
-              Icon(Icons.access_time_outlined, size: 60),
+              Image(
+                image: NetworkImage('https://httpbin.org/image'),
+                width: 50,
+                height: 50,
+              ),
               Positioned(
-                  bottom: 4, right: -4, child: Icon(Icons.ac_unit, size: 25)),
+                  bottom: -5, right: -7, child: Icon(Icons.abc, size: 30)),
             ],
           ),
           const SizedBox(height: 8),
