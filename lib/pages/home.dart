@@ -37,6 +37,7 @@ class HomePageState extends State<HomePage> {
                 buildAvailableProductSegments(context),
                 const SizedBox(height: 16),
                 chooseCardToDisplay(),
+                buildRecentPaymentsSection(),
               ],
             )),
       ),
@@ -346,4 +347,55 @@ class HomePageState extends State<HomePage> {
       ),
     );
   }
+}
+
+Widget buildRecentPaymentsSection() {
+  return Container(
+    height: 130,
+    child: Card(
+      color: Colors.white,
+      child: ListView(
+          padding: const EdgeInsets.only(left: 8, top: 16, right: 8),
+          scrollDirection: Axis.horizontal,
+          children: <Widget>[
+            ContactList('Peter'),
+            ContactList('Peter'),
+            ContactList('Peter'),
+            ContactList('Peter'),
+            ContactList('Peter'),
+            ContactList('Peter'),
+            ContactList('Peter'),
+            ContactList('Peter'),
+            ContactList('Peter'),
+            ContactList('Peter'),
+            ContactList('Peter'),
+          ]),
+    ),
+  );
+}
+
+Widget ContactList(String name) {
+  return Row(
+    children: [
+      Column(
+        children: [
+          Stack(
+            children: const [
+              Icon(Icons.access_time_outlined, size: 60),
+              Positioned(
+                  bottom: 4, right: -4, child: Icon(Icons.ac_unit, size: 25)),
+            ],
+          ),
+          const SizedBox(height: 8),
+          Text(
+            name,
+            style: const TextStyle(fontSize: 14),
+          ),
+        ],
+      ),
+      const SizedBox(
+        width: 20,
+      )
+    ],
+  );
 }
