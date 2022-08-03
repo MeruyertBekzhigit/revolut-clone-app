@@ -24,20 +24,22 @@ class HomePageState extends State<HomePage> {
         shadowColor: Colors.transparent,
         backgroundColor: Colors.transparent,
       ),
-      body: Container(
-          margin:
-              const EdgeInsets.only(left: 16, top: 24, right: 16, bottom: 24),
-          child: Column(
-            children: [
-              buildQuickAccessMenuBar(),
-              const SizedBox(height: 16),
-              buildInputSearchBar(context),
-              const SizedBox(height: 16),
-              buildAvailableProductSegments(context),
-              const SizedBox(height: 16),
-              chooseCardToDisplay(),
-            ],
-          )),
+      body: SingleChildScrollView(
+        child: Container(
+            margin:
+                const EdgeInsets.only(left: 16, top: 24, right: 16, bottom: 24),
+            child: Column(
+              children: [
+                buildQuickAccessMenuBar(),
+                const SizedBox(height: 16),
+                buildInputSearchBar(context),
+                const SizedBox(height: 16),
+                buildAvailableProductSegments(context),
+                const SizedBox(height: 16),
+                chooseCardToDisplay(),
+              ],
+            )),
+      ),
     );
   }
 
