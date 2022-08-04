@@ -270,7 +270,7 @@ class HomePageState extends State<HomePage> {
       children: [
         Text(
           headerTitle,
-          style: TextStyle(fontSize: 16, color: Color(0xff75808a)),
+          style: const TextStyle(fontSize: 16, color: const Color(0xff75808a)),
         ),
         Expanded(
           child: Container(),
@@ -398,13 +398,12 @@ Widget ContactList(String name) {
         children: [
           Stack(
             clipBehavior: Clip.none,
-            children: const [
-              Image(
-                image: NetworkImage('https://httpbin.org/image'),
-                width: 50,
-                height: 50,
+            children: [
+              CustomCircleAvatar(
+                myImage: const NetworkImage('https://httpbin.org/imagekmk'),
+                initials: 'AB',
               ),
-              Positioned(
+              const Positioned(
                 bottom: -3,
                 right: -4,
                 child: CircleAvatar(
@@ -431,4 +430,40 @@ Widget ContactList(String name) {
       )
     ],
   );
+}
+
+class CustomCircleAvatar extends StatefulWidget {
+  NetworkImage myImage;
+
+  String initials;
+
+  CustomCircleAvatar({required this.myImage, required this.initials});
+
+  @override
+  _CustomCircleAvatarState createState() => _CustomCircleAvatarState();
+}
+
+class _CustomCircleAvatarState extends State<CustomCircleAvatar> {
+  bool _checkLoading = true;
+
+  @override
+  void initState() {
+    widget.myImage.resolve(const ImageConfiguration()).addListener(
+        ImageStreamListener((ImageInfo image, bool synchronousCall) {
+      if (mounted) {
+        setState(() {
+          _checkLoading = false;
+        });
+      }
+    }));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return _checkLoading == true
+        ? CircleAvatar(child: Text(widget.initials))
+        : CircleAvatar(
+            backgroundImage: widget.myImage,
+          );
+  }
 }
