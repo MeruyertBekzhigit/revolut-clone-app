@@ -114,7 +114,6 @@ class HomePageState extends State<HomePage> {
       children: [
         Expanded(
           child: CupertinoSlidingSegmentedControl<AvailableProductSegments>(
-            padding: EdgeInsets.all(2),
             backgroundColor: Colors.transparent,
             groupValue: _selectedSegment,
             onValueChanged: (AvailableProductSegments? value) {
@@ -152,14 +151,6 @@ class HomePageState extends State<HomePage> {
               ),
               AvailableProductSegments.crypto: Text(
                 'Crypto',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 15,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-              AvailableProductSegments.vaults: Text(
-                'Vaults',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 15,
@@ -349,6 +340,7 @@ class HomePageState extends State<HomePage> {
     return Center(
       child: Card(
         color: Colors.white,
+        elevation: 0.3,
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Column(
@@ -377,6 +369,7 @@ Widget buildRecentPaymentsSection() {
     height: 130,
     child: Card(
       color: Colors.white,
+      elevation: 0.3,
       child: ListView(
         padding: const EdgeInsets.only(left: 8, top: 16, right: 8),
         scrollDirection: Axis.horizontal,
