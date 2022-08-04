@@ -383,6 +383,7 @@ Widget ContactList(String name) {
       Column(
         children: [
           Stack(
+            clipBehavior: Clip.none,
             children: const [
               Image(
                 image: NetworkImage('https://httpbin.org/image'),
@@ -390,7 +391,13 @@ Widget ContactList(String name) {
                 height: 50,
               ),
               Positioned(
-                  bottom: -5, right: -7, child: Icon(Icons.abc, size: 30)),
+                bottom: -3,
+                right: -4,
+                child: CircleAvatar(
+                  radius: 9,
+                  backgroundImage: AssetImage('assets/images/revolut_icon.png'),
+                ),
+              ),
             ],
           ),
           const SizedBox(height: 8),
