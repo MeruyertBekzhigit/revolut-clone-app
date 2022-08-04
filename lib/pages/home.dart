@@ -366,7 +366,7 @@ class HomePageState extends State<HomePage> {
 
 Widget buildRecentPaymentsSection() {
   return Container(
-    height: 130,
+    constraints: const BoxConstraints(minHeight: 110, maxHeight: 140),
     child: Card(
       color: Colors.white,
       elevation: 0.3,
@@ -415,9 +415,14 @@ Widget ContactList(String name) {
             ],
           ),
           const SizedBox(height: 8),
-          Text(
-            name,
-            style: const TextStyle(fontSize: 14),
+          Container(
+            constraints: const BoxConstraints(minWidth: 50, maxWidth: 60),
+            child: Text(
+              name,
+              style: const TextStyle(fontSize: 14),
+              textAlign: TextAlign.center,
+              overflow: TextOverflow.visible,
+            ),
           ),
         ],
       ),
