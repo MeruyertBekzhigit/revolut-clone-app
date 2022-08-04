@@ -114,6 +114,7 @@ class HomePageState extends State<HomePage> {
       children: [
         Expanded(
           child: CupertinoSlidingSegmentedControl<AvailableProductSegments>(
+            padding: EdgeInsets.all(2),
             backgroundColor: Colors.transparent,
             groupValue: _selectedSegment,
             onValueChanged: (AvailableProductSegments? value) {
@@ -127,23 +128,43 @@ class HomePageState extends State<HomePage> {
               // extract to build segments with text parameter
               AvailableProductSegments.accounts: Text(
                 'Accounts',
-                style: TextStyle(color: Colors.black, fontSize: 16),
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                ),
               ),
               AvailableProductSegments.cards: Text(
                 'Cards',
-                style: TextStyle(color: Colors.black, fontSize: 16),
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 15,
+                  fontWeight: FontWeight.w400,
+                ),
               ),
               AvailableProductSegments.stocks: Text(
                 'Stocks',
-                style: TextStyle(color: Colors.black, fontSize: 16),
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 15,
+                  fontWeight: FontWeight.w400,
+                ),
               ),
               AvailableProductSegments.crypto: Text(
                 'Crypto',
-                style: TextStyle(color: Colors.black, fontSize: 16),
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 15,
+                  fontWeight: FontWeight.w400,
+                ),
               ),
               AvailableProductSegments.vaults: Text(
                 'Vaults',
-                style: TextStyle(color: Colors.black, fontSize: 16),
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 15,
+                  fontWeight: FontWeight.w400,
+                ),
               ),
             },
           ),
