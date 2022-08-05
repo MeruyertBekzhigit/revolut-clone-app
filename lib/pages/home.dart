@@ -362,74 +362,79 @@ class HomePageState extends State<HomePage> {
       ),
     );
   }
-}
 
-Widget buildRecentPaymentsSection() {
-  return Container(
-    constraints: const BoxConstraints(minHeight: 110, maxHeight: 140),
-    child: Card(
-      color: Colors.white,
-      elevation: 0.3,
-      child: ListView(
-        padding: const EdgeInsets.only(left: 8, top: 16, right: 8),
-        scrollDirection: Axis.horizontal,
-        children: <Widget>[
-          ContactList('Jane Doe'),
-          ContactList('Jane Doe'),
-          ContactList('Jane Doe'),
-          ContactList('Jane Doe'),
-          ContactList('Jane Doe'),
-          ContactList('Jane Doe'),
-          ContactList('Jane Doe'),
-          ContactList('Jane Doe'),
-          ContactList('Jane Doe'),
-          ContactList('Jane Doe'),
-          ContactList('Jane Doe'),
-        ],
+  Widget buildRecentPaymentsSection() {
+    return Container(
+      constraints: const BoxConstraints(minHeight: 110, maxHeight: 140),
+      child: Card(
+        color: Colors.white,
+        elevation: 0.3,
+        child: ListView(
+          padding: const EdgeInsets.only(left: 8, top: 16, right: 8),
+          scrollDirection: Axis.horizontal,
+          children: <Widget>[
+            ContactList('Jane Doe'),
+            ContactList('Jane Doe'),
+            ContactList('Jane Doe'),
+            ContactList('Jane Doe'),
+            ContactList('Jane Doe'),
+            ContactList('Jane Doe'),
+            ContactList('Jane Doe'),
+            ContactList('Jane Doe'),
+            ContactList('Jane Doe'),
+            ContactList('Jane Doe'),
+            ContactList('Jane Doe'),
+          ],
+        ),
       ),
-    ),
-  );
-}
+    );
+  }
 
-Widget ContactList(String name) {
-  return Row(
-    children: [
-      Column(
-        children: [
-          Stack(
-            clipBehavior: Clip.none,
-            children: [
-              CustomCircleAvatar(
-                myImage: const NetworkImage('https://httpbin.org/imagekmk'),
-                initials: 'AB',
-              ),
-              const Positioned(
-                bottom: -3,
-                right: -4,
-                child: CircleAvatar(
-                  radius: 9,
-                  backgroundImage: AssetImage('assets/images/revolut_icon.png'),
+  Widget ContactList(String name) {
+    return Row(
+      children: [
+        Column(
+          children: [
+            Stack(
+              clipBehavior: Clip.none,
+              children: [
+                CustomCircleAvatar(
+                  myImage: const NetworkImage('https://httpbin.org/imagekmk'),
+                  initials: getInitials(name),
                 ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 8),
-          Container(
-            constraints: const BoxConstraints(minWidth: 50, maxWidth: 60),
-            child: Text(
-              name,
-              style: const TextStyle(fontSize: 14),
-              textAlign: TextAlign.center,
-              overflow: TextOverflow.visible,
+                const Positioned(
+                  bottom: -3,
+                  right: -4,
+                  child: CircleAvatar(
+                    radius: 9,
+                    backgroundImage:
+                        AssetImage('assets/images/revolut_icon.png'),
+                  ),
+                ),
+              ],
             ),
-          ),
-        ],
-      ),
-      const SizedBox(
-        width: 20,
-      )
-    ],
-  );
+            const SizedBox(height: 8),
+            Container(
+              constraints: const BoxConstraints(minWidth: 50, maxWidth: 60),
+              child: Text(
+                name,
+                style: const TextStyle(fontSize: 14),
+                textAlign: TextAlign.center,
+                overflow: TextOverflow.visible,
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(
+          width: 20,
+        )
+      ],
+    );
+  }
+
+  String getInitials(String contactName) => contactName.isNotEmpty
+      ? contactName.trim().split(' ').map((l) => l[0]).take(2).join()
+      : '';
 }
 
 class CustomCircleAvatar extends StatefulWidget {
